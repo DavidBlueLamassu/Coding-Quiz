@@ -263,9 +263,12 @@ function answerAssessment() {
 }
 
 function scoreStorage() {
+    
     localStorage.setItem("score", secondsLeft);
+    // submitButton.setAttribute("style", "url(https://en.wikipedia.org/wiki/Emerald)");
         submitButton.addEventListener("click", function(event) {
-            event.preventDefault();
+            window.location.href = "./highscores.html";
+            // event.preventDefault();
             //var submitButtonPress = event.target;
             //if (submitButtonPress.matches("button") === true) {
                 var initialsSave = initials.value;
