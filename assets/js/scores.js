@@ -13,10 +13,6 @@ var scoresObject = {
 
 var scoresArray = [];
 
-//var stopScore;
-
-//console.log(highScore);
-
 function push() {
     if (highScore === "") {
         return;
@@ -27,13 +23,7 @@ function push() {
 
 push ();
 
-
-
 oldScores = JSON.parse(localStorage.getItem("scorelist4"));
-
-console.log(oldScores);
-
-
 
 if (oldScores !== null) {
     combinedScore = oldScores.concat(scoresArray);
@@ -42,16 +32,6 @@ if (oldScores !== null) {
 if (oldScores === null && highScore !== null) {
     combinedScore = scoresArray; 
 }
- 
-
-
-
-
-console.log(combinedScore);
-
-
-
-console.log(combinedScore);
 
 function elements() {
 
@@ -67,27 +47,13 @@ for (var i = 0; i < combinedScore.length; i++) {
 }
 }
 
-
 elements();
 
 localStorage.setItem("scorelist4", JSON.stringify(combinedScore));
 
 localStorage.setItem("score", "");
 
-//console.log()
-
 clear.addEventListener("click", function(event) {
-    alert("Are you sure you want to clear high scores?");
     scoresList.innerHTML = "";
-    // element = document.getElementById("highscores");
-    // element.remove();
     localStorage.clear();
-    // event.preventDefault();
-    // remove.scoresList();
-    // localStorage.setItem("scorelist2", []);
 })
-
-
-// localStorage.setItem("score", "");
-// localStorage.setItem("initials", "");
-// console.log(highScore);
