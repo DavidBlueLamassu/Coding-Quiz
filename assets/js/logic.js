@@ -77,7 +77,6 @@ startbutton.addEventListener("click", function(event) {
         timerCounter.textContent = secondsLeft;
         
         if(secondsLeft === 0 || i === 5) {
-          // Stops execution of action at set interval
             clearInterval(timerInterval); 
             questionDisplay.setAttribute("style", "display: none");
             score.setAttribute("style", "display: initial");
@@ -102,32 +101,13 @@ startbutton.addEventListener("click", function(event) {
                             
                 if (assessmentTime === 0) {
                   clearInterval(assessmentInterval); 
-                  //time();
                   assessmentLine.remove ();
                   assessmentAnswer.remove ();
                   scoreStorage();
-                  //answerQuestion();
                 }
             }, 1000);
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         }
-    
-      }, 1000); //will run every 1000 miliseconds
+    }, 1000);
 })
 
 answers.appendChild(firstAnswer);
@@ -147,24 +127,9 @@ function askQuestion() {
 }
 
 function answerQuestion() {answers.addEventListener("click", function(event) {
-    //event.preventDefault();
     var answerButton = event.target;
-    //alert(questionsAnswers[i].answer1[1] + questionsAnswers[i].answer2[1] + questionsAnswers[i].answer3[1] + questionsAnswers[i].answer4[1]);
-    //var answerButton2 = event.value;
-    //console.log(answerButton.matches);
-    //console.log(answerButton2);
-    // if (assessmentTime > 0 && i > 0) {
-    //     assessmentLine.remove ();
-    //     assessmentAnswer.remove ();
-    //     assessmentTime = 2;
-    // }
-
     if (answerButton.matches("button") === true && assessmentTime === 0 && i < 5) {
-        
-        // askQuestion();
-        //alert(i);
         var index = answerButton.getAttribute("data-index");
-        // alert(index);
         if (index === "one") {
             if (questionsAnswers[i].answer1[1] === true) {
                 rightWrong = true;
@@ -190,44 +155,14 @@ function answerQuestion() {answers.addEventListener("click", function(event) {
                 rightWrong = false;
             }
         }
-        //alert(rightWrong);
-        // if (i === 4) {
-        //     clearInternal(timerInterval);
-        // }
         i++;
         askQuestion();
 
     }
 })}
-// if (element.matches("button") === true) {
-//     // Get its data-index value and remove the todo element from the list
-//     var index = element.parentElement.getAttribute("data-index");
-//     todos.splice(index, 1);
-
-
-
-
 
 askQuestion();
 answerQuestion();
-
-// var choiceList = document.createElement("ul");
-// answers.appendChild(choiceList);
-//question.textContent = "Question 1";
-//question will need to link to an array/block with 
-//questions and answers
-
-
-// var questionBox = 
-
-// var header = "p";
-// var header2 = document.createElement(header);
-// header2.textContent = "This is an h3 header";
-// document.body.appendChild(header2);
-
-function time() {
-    alert("Time!");
-}
 
 function answerAssessment() {
     if (i > 0) {
@@ -245,17 +180,13 @@ function answerAssessment() {
             secondsLeft -= 10;
         }
         
-        //askQuestion();
-
         var assessmentInterval = setInterval(function() {
             assessmentTime--;
                         
             if (assessmentTime === 0) {
               clearInterval(assessmentInterval); 
-              //time();
               assessmentLine.remove ();
               assessmentAnswer.remove ();
-              //answerQuestion();
             }
         }, 1000);
         assessmentTime = 1;
@@ -263,18 +194,11 @@ function answerAssessment() {
 }
 
 function scoreStorage() {
-    
     localStorage.setItem("score", secondsLeft);
-    // submitButton.setAttribute("style", "url(https://en.wikipedia.org/wiki/Emerald)");
         submitButton.addEventListener("click", function(event) {
             window.location.href = "./highscores.html";
-            // event.preventDefault();
-            //var submitButtonPress = event.target;
-            //if (submitButtonPress.matches("button") === true) {
                 var initialsSave = initials.value;
-                //alert(initialsSave);
                 localStorage.setItem("initials", initialsSave);
-            //}    
         }
     )
 }
