@@ -1,21 +1,22 @@
-//'id' for start button to begin quiz
+//start button to begin quiz
 var startbutton = document.querySelector("#start");
 
 //timer to keep track of time left for quiz
 var timerCounter = document.querySelector("#time");
 
-//connects to 'div' which hold initial display before game begins; 
-//this is set to 'display: none' using inline CSS when game begins 
+//connects to the 'div' which holds the startup display before the game 
+//begins; once the game has begun, this is set to 'display: none' using the 
+//setAttribute() method
 var startSetup = document.querySelector("#start-screen");
 
-//acts as a site to hold a question when the game begins using
+//acts as a site to hold a question, when the game begins, using
 //.textContent
 var question = document.querySelector("#question-title");
 
 //acts as a site to append multiple choice answers
 var answers = document.querySelector("#choices");
 
-//selects the entire 'div' where questions and answer are held;
+//selects the entire 'div' where questions and answers are held;
 //initially this is set to 'display: none'; when the game begins
 //this must be set to 'display: initial' to become visible
 var questionDisplay = document.querySelector("#questions");
@@ -26,7 +27,7 @@ var finalScore = document.querySelector("#final-score");
 //This button must be clicked to submit initials and final score.
 var submitButton = document.querySelector("#submit");
 
-//This textbox holds user initials when for storage when the 
+//This textbox holds user initials for storage when the 
 //submit button is clicked.
 var initials = document.querySelector("#initials");
 
@@ -39,7 +40,7 @@ var score = document.querySelector("#end-screen");
 //the timer hits 0 or all the questions are answered.
 var secondsLeft = 75;
 
-//Used to track the questions in the 'questionsAnswers' array:
+//Used to iterate through the questions in the 'questionsAnswers' array:
 //the number increases by 1 every time an answer is selected,
 //allowing the next question and answers to be displayed.
 var i = 0;
@@ -64,7 +65,7 @@ var assessmentLine;
 var assessmentAnswer;
 
 //Variables to create button elements to hold multiple choice
-//answers; they are indexed one-four so that the user's answer
+//answers; they are indexed one to four so that the user's answer
 //may be determined and assessed.
 var firstAnswer = document.createElement("button");
 firstAnswer.setAttribute("data-index", "one");
@@ -75,8 +76,8 @@ thirdAnswer.setAttribute("data-index", "three");
 var fourthAnswer = document.createElement("button");
 fourthAnswer.setAttribute("data-index", "four");
 
-//An array of objects. Each object holds with multiple choice 
-//answers numbered 1-4. The answers are held in array within the
+//An array of objects. Each object holds multiple choice 
+//answers numbered 1-4. The answers are held in an array within the
 //object and paired with a boolean which indicates whether they
 //are correct (true) or incorrect (false).
 var questionsAnswers = [
@@ -117,7 +118,7 @@ var questionsAnswers = [
     }
 ];
 
-//Sets time-keeping element to 75 second
+//Sets time-keeping element to 75 seconds
 timerCounter.textContent = secondsLeft;
 
 //Activates startbutton; when the button is clicked the game
@@ -181,7 +182,7 @@ startbutton.addEventListener("click", function(event) {
             finalScore.textContent = secondsLeft;
             
             //A timer which deletes the 'Correct!'/'Wrong'
-            //assessment for the last question to be displayed for 1 
+            //assessment for the last question. This is to be displayed for 1 
             //second at the end of the game.
             assessmentTime = 1;
             var assessmentInterval = setInterval(function() {
@@ -196,12 +197,12 @@ startbutton.addEventListener("click", function(event) {
                   //user initials.
                   scoreStorage();
                 }
-            }, 1000); //Sets timer internal to 1000 milliseconds
+            }, 1000); //Sets timer interval to 1000 milliseconds
         }
-    }, 1000); //Sets timer internal to 1000 milliseconds
+    }, 1000); //Sets timer interval to 1000 milliseconds
 })
 
-//Appends the first-fourthAnswer element variables to the #choices 
+//Appends the firstAnswer to fourthAnswer element variables to the #choices 
 //'div' to create four buttons that will hold multiple choice 
 //answers.
 answers.appendChild(firstAnswer);
@@ -236,7 +237,7 @@ function answerQuestion() {answers.addEventListener("click", function(event) {
     var answerButton = event.target;
     //The conditions require that a button was clicked; that assessement === 0 
     //(this variable controls the amount of time the 'Correct!'/'Wrong!' assessment 
-    //is displayed; the element which holds it cannot be removed if a new question
+    //is displayed; the elements which hold it cannot be removed if a new question
     //is called before it is deleted); and that i < 5 (as there are only 5 questions
     //in the quiz, this prevents a sixth question from being called).
     if (answerButton.matches("button") === true && assessmentTime === 0 && i < 5) {
@@ -268,7 +269,7 @@ function answerQuestion() {answers.addEventListener("click", function(event) {
         }
         //Variable increases by 1 to allow the answerQuestion() function to move
         //onto the next set of answers in the answersQuestions array when it is next called.
-        //This increase by 1 also moves the askQuestion() function to move onto the next 
+        //This increase by 1 also moves the askQuestion() function onto the next 
         //question in the answersQuestions array.
         i++;
         
@@ -291,7 +292,7 @@ function answerAssessment() {
         
         //Creates a line with either 'Correct!' or 'Wrong!' underneath depending
         //upon whether the previous answer was right or wrong. This is displayed
-        //under the ensuing question. If the answer was 'Wrong!' 10 seoncs will
+        //under the ensuing question. If the answer was 'Wrong!' 10 seconds will
         //be subtracted from the time left ('secondsLeft'), which also serves
         //as a score.
         assessmentLine = document.createElement("p");
@@ -318,7 +319,7 @@ function answerAssessment() {
               assessmentLine.remove ();
               assessmentAnswer.remove ();
             }
-        }, 1000); //Sets timer internal to 1000 milliseconds
+        }, 1000); //Sets timer interval to 1000 milliseconds
         assessmentTime = 1; //Resets the timer for the next iteration of the 'Correct!'/
         //'Wrong' assessment.
     }
