@@ -50,18 +50,18 @@ var questionsAnswers = [
         answer4: ["all of the above", true]
     },
     {
-        question: "2. Arrays in JavaScript can be used to store __________.",
-        answer1: ["numbers and strings", false],
-        answer2: ["other arrays", false],
-        answer3: ["booleans", false],
-        answer4: ["all of the above", true]
+        question: "The condition in an if/else statement is enclosed within __________.",
+        answer1: ["parentheses", true],
+        answer2: ["curly brackets", false],
+        answer3: ["quotes", false],
+        answer4: ["square brackets", false]
     },
     {
-        question: "3. Arrays in JavaScript can be used to store __________.",
-        answer1: ["numbers and strings", false],
-        answer2: ["other arrays", false],
-        answer3: ["booleans", false],
-        answer4: ["all of the above", true]
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        answer1: ["JavaScript", false],
+        answer2: ["console.log", true],
+        answer3: ["terminal/bash", false],
+        answer4: ["for loops", false]
     }
 ];
 
