@@ -13,12 +13,12 @@ var scoresList = document.querySelector("#highscores");
 var clear = document.querySelector("#clear");
 
 //A score which combines both the most recent score with older
-//scores retained in 'localStorage'; this is formed using the 
+//scores retained in 'localStorage'; this will be formed using the 
 //concat() method.
 var combinedScore;
 
-//Used to hold old scores once retrieved from 'localStorage' for 
-//the purpose of combining this with new score using the concat()
+//Used to hold old scores, once retrieved from 'localStorage', for 
+//the purpose of combining this with a new score using the concat()
 //method.
 var oldScores;
 
@@ -53,8 +53,9 @@ push ();
 //ojects and must be stored as a string using JSON.stringify().
 oldScores = JSON.parse(localStorage.getItem("scorelist"));
 
-//'oldScores' will be combined with the 'scoresArray' containing a new
-//score provided old scores have been stored in 'localStorage'. This condition
+//'oldScores' will be concatenated with the 'scoresArray' to form the 'combinedScore'
+//variable, containing both old and new scores, provided that old scores have 
+//been stored in 'localStorage'. This condition
 //prevents null values being added to the 'combinedScore' array and later
 //displayed as scores.
 if (oldScores !== null) {
@@ -62,7 +63,7 @@ if (oldScores !== null) {
     } 
 
 //If there are no old scores to add but there is a new score then 
-//combinedScore will be equal to the new score values in 'scoresArray' (if a 
+//'combinedScore' will be equal to the new score values in 'scoresArray' (if a 
 //score is being added to this file for the first time). The value
 //of combinedScore will be retained in 'localStorage' below to be retrieved
 //as var 'oldScores' upon further iterations of the 'scores.js' file.
@@ -70,7 +71,7 @@ if (oldScores === null && highScore !== null) {
     combinedScore = scoresArray; 
 }
 
-//This function adds elements for each set of initials and scores in 
+//This function adds 'li' elements for each set of initials and scores in 
 //'combinedScore' by iterating through a 'for' loop. It will not run if 
 //there are no values to be be held in 'combinedScore' (oldScores === null &&
 //highScore === null).
@@ -98,7 +99,7 @@ localStorage.setItem("scorelist", JSON.stringify(combinedScore));
 localStorage.setItem("score", "");
 
 //The clear button is activated. When clicked this removes all score elements and 
-//clears local storage so that old scores and wiped and can no longer be displayed.
+//clears local storage so that old scores are wiped and can no longer be displayed.
 clear.addEventListener("click", function(event) {
     scoresList.innerHTML = "";
     localStorage.clear();
