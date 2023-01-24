@@ -183,7 +183,10 @@ startbutton.addEventListener("click", function(event) {
             
             //A timer which deletes the 'Correct!'/'Wrong'
             //assessment for the last question. This is to be displayed for 1 
-            //second at the end of the game.
+            //second at the end of the game. 
+            //My use of the remove() method derives from examples on 'MDN Web Docs': 
+            //"Element.remove()", 'MDN Web Docs', last viewed 24 January 2023: 
+            //https://developer.mozilla.org/en-US/docs/Web/API/Element/remove
             assessmentTime = 1;
             var assessmentInterval = setInterval(function() {
                 assessmentTime--;
@@ -311,6 +314,9 @@ function answerAssessment() {
         
         //Timer which allows the 'Correct!'/'Wrong!' assessment to be displayed for 
         //1 second. After this time has elapsed the elements containing it are removed.
+        //My use of the remove() method derives from examples on 'MDN Web Docs': 
+        //"Element.remove()", 'MDN Web Docs', last viewed 24 January 2023: 
+        //https://developer.mozilla.org/en-US/docs/Web/API/Element/remove
         var assessmentInterval = setInterval(function() {
             assessmentTime--;
                         

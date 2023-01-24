@@ -37,7 +37,13 @@ var scoresArray = [];
 //into the 'scoresArray'. This sets a condition that there must be a new
 //score for the push to take place, thereby preventing the new score from
 //being added multiple times on refresh. 'highscore' is set to "" below and
-//will only contain a new number once another game has been played.
+//will only contain a new number once another game has been played. (The 
+//following article provided useful guidance on pushing an object into an 
+//array: Farah Batool, "How to Push an Object to an Array in JavaScript", 
+//Linux Hint, (undated), last viewed 24 January 2023:
+//https://linuxhint.com/push-an-object-to-an-array-in-javascript/#:~:text=
+//To%20push%20an%20object%20to%20an%20array%20in%20JavaScript%2C%20use,
+//use%20the%20splice()%20method.)
 function push() {
     if (highScore === "") {
         return;
